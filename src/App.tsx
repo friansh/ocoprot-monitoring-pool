@@ -1,588 +1,209 @@
 import { useState } from "react";
-import MapImg from "./assets/map.png";
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
-
-function Chart({
-  chartTitle,
-  maxValue,
-  minValue,
-  yAxisLabel,
-}: {
-  chartTitle: string;
-  maxValue: number;
-  minValue: number;
-  yAxisLabel: string;
-}) {
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-  );
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "bottom" as const,
-      },
-      title: {
-        display: true,
-        text: chartTitle,
-      },
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Waktu (Jam)",
-        },
-      },
-      y: {
-        beginAtZero: true,
-        title: {
-          display: true,
-          text: yAxisLabel,
-        },
-      },
-    },
-  };
-
-  const labels = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23,
-  ];
-
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: "Titik 1",
-        data: labels.map(() =>
-          faker.number.int({ min: minValue, max: maxValue })
-        ),
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-      {
-        label: "Titik 2",
-        data: labels.map(() =>
-          faker.number.int({ min: minValue, max: maxValue })
-        ),
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-      },
-      {
-        label: "Titik 3",
-        data: labels.map(() =>
-          faker.number.int({ min: minValue, max: maxValue })
-        ),
-        borderColor: "rgb(75, 192, 192)",
-        backgroundColor: "rgba(75, 192, 192, 0.5)",
-      },
-      {
-        label: "Titik 4",
-        data: labels.map(() =>
-          faker.number.int({ min: minValue, max: maxValue })
-        ),
-        borderColor: "rgb(255, 159, 64)",
-        backgroundColor: "rgba(255, 159, 64, 0.5)",
-      },
-      {
-        label: "Titik 5",
-        data: labels.map(() =>
-          faker.number.int({ min: minValue, max: maxValue })
-        ),
-        borderColor: "rgb(153, 102, 255)",
-        backgroundColor: "rgba(153, 102, 255, 0.5)",
-      },
-    ],
-  };
-
-  return (
-    <div className="p-3 bg-white rounded-lg shadow-md m-2 border border-gray-200">
-      <Line options={options} data={data} />
-    </div>
-  );
-}
+import { useNavigate } from "react-router";
 
 function App() {
+  let navigate = useNavigate();
+
   return (
     <div className="bg-slate-50 min-h-screen">
-      {/* Header */}
-      <div className="bg-linear-to-r from-slate-800 to-slate-700 shadow-lg py-4 px-5 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-semibold mb-1">
-                Sistem Monitoring Kualitas Air Kolam Pengendapan Lumpur
-              </h1>
-              <p className="text-slate-300 text-sm">PT Lorem Ipsum</p>
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white py-16 px-5 shadow-lg">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl font-bold mb-4">
+            Selamat Datang di Portal Manajemen Terintegrasi
+          </h1>
+          <h2 className="text-2xl font-semibold mb-6 text-slate-300">
+            PT Lorem Ipsum
+          </h2>
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            Portal terpusat untuk monitoring dan manajemen operasional
+            perusahaan secara real-time. Akses semua sistem monitoring, data
+            analitik, dan informasi penting dalam satu platform yang
+            terintegrasi.
+          </p>
+          <div className="mt-8 flex items-center justify-center gap-8 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+              <span>Sistem Aktif</span>
             </div>
-            <div className="text-right">
-              <div className="flex items-center gap-2 justify-end">
-                <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold">Sistem Aktif</span>
-              </div>
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
+                />
+              </svg>
+              <span>Aman & Terenkripsi</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+              <span>24/7 Monitoring</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Info Section */}
-      <div className="bg-white border-b border-gray-200 py-4 px-5">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-gray-700 text-sm leading-relaxed">
-            <span className="font-semibold">PT Lorem Ipsum</span> berkomitmen
-            dalam pengelolaan lingkungan yang berkelanjutan. Sistem monitoring
-            real-time ini dirancang untuk memantau kualitas air di kolam
-            pengendapan lumpur tambang secara kontinyu, memastikan parameter
-            kualitas air tetap dalam batas standar yang telah ditetapkan sesuai
-            dengan regulasi lingkungan.
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto p-8">
+        <div className="mb-8">
+          <h3 className="text-2xl font-bold text-slate-800 mb-2">
+            Pilih Sistem
+          </h3>
+          <p className="text-slate-600">
+            Klik pada modul di bawah untuk mengakses sistem yang diinginkan
           </p>
         </div>
-      </div>
-      <div className="flex flex-row gap-5 max-w-7xl mx-auto p-5">
-        <div className="w-1/3">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-8 bg-slate-700 rounded-full"></div>
-            <div>
-              <h2 className="font-bold text-xl text-slate-800">Denah Lokasi</h2>
-              <p className="text-xs text-slate-500">Site Layout Map</p>
-            </div>
-          </div>
-          <img src={MapImg} className="block rounded-xl shadow-lg" />
-        </div>
-        <div className="w-2/3 ">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-8 bg-slate-700 rounded-full"></div>
-            <div>
-              <h2 className="font-bold text-xl text-slate-800">
-                Nilai Saat Ini
-              </h2>
-              <p className="text-xs text-slate-500">
-                Current Monitoring Values
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-4">
-            <div className="bg-linear-to-br from-slate-50 to-slate-100 p-2 rounded-lg shadow-md border border-slate-200">
-              <Cek title="Titik 1" />
-            </div>
-            <div className="bg-linear-to-br from-slate-50 to-slate-100 p-2 rounded-lg shadow-md border border-slate-200">
-              <Cek title="Titik 2" />
-            </div>
-            <div className="bg-linear-to-br from-slate-50 to-slate-100 p-2 rounded-lg shadow-md border border-slate-200">
-              <Cek title="Titik 3" />
-            </div>
-            <div className="bg-linear-to-br from-slate-50 to-slate-100 p-2 rounded-lg shadow-md border border-slate-200">
-              <Cek title="Titik 4" />
-            </div>
-            <div className="bg-linear-to-br from-slate-50 to-slate-100 p-2 rounded-lg shadow-md border border-slate-200">
-              <Cek title="Titik 5" />
-            </div>
-          </div>
-        </div>
-      </div>
+        <div className="grid grid-cols-3 gap-5">
+          <div
+            className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-emerald-50 to-emerald-100 hover:from-emerald-100 hover:to-emerald-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group"
+            onClick={() => {
+              navigate("/pool");
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-16 m-auto block text-emerald-700 group-hover:scale-110 transition-transform duration-300"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
+              />
+            </svg>
 
-      <div className="mt-5 max-w-7xl mx-auto block p-5">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-1 h-8 bg-slate-700 rounded-full"></div>
-            <div>
-              <h2 className="font-bold text-xl text-slate-800">
-                Grafik Riwayat
-              </h2>
-              <p className="text-xs text-slate-500">Historical Data Charts</p>
-            </div>
+            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-emerald-800 transition-colors">
+              Monitoring Status Truk
+            </span>
+            <span className="block text-center text-xs text-slate-600 mt-1">
+              Klik untuk melihat detail
+            </span>
           </div>
-          <span className="text-sm text-slate-500 italic">
-            💡 Klik legenda untuk toggle data
-          </span>
-        </div>
-        <div className="grid grid-cols-2">
-          <div>
-            <Chart
-              chartTitle="Suhu Lingkungan"
-              minValue={25}
-              maxValue={40}
-              yAxisLabel="Degree Celcius"
-            />
+          <div
+            className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group"
+            onClick={() => {
+              navigate("/pool");
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-16 m-auto block text-blue-700 group-hover:scale-110 transition-transform duration-300"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z"
+              />
+            </svg>
+
+            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-blue-800 transition-colors">
+              Monitoring Kolam Endapan
+            </span>
+            <span className="block text-center text-xs text-slate-600 mt-1">
+              Klik untuk melihat detail
+            </span>
           </div>
-          <div>
-            <Chart
-              chartTitle="Kelembapan Lingkungan"
-              minValue={50}
-              maxValue={99}
-              yAxisLabel="% RH"
-            />
+          <div className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-amber-50 to-amber-100 hover:from-amber-100 hover:to-amber-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-16 m-auto block text-amber-700 group-hover:scale-110 transition-transform duration-300"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"
+              />
+            </svg>
+
+            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-amber-800 transition-colors">
+              Monitoring Klimat Kantor
+            </span>
+            <span className="block text-center text-xs text-slate-600 mt-1">
+              Klik untuk melihat detail
+            </span>
           </div>
-          <div>
-            <Chart
-              chartTitle="Suhu Air"
-              minValue={25}
-              maxValue={59}
-              yAxisLabel="Degree Celcius"
-            />
+          <div className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-16 m-auto block text-purple-700 group-hover:scale-110 transition-transform duration-300"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75"
+              />
+            </svg>
+
+            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-purple-800 transition-colors">
+              Absensi
+            </span>
+            <span className="block text-center text-xs text-slate-600 mt-1">
+              Klik untuk melihat detail
+            </span>
           </div>
-          <div>
-            <Chart
-              chartTitle="pH"
-              minValue={4}
-              maxValue={9}
-              yAxisLabel="Satuan pH"
-            />
-          </div>
-          <div>
-            <Chart
-              chartTitle="EC"
-              minValue={500}
-              maxValue={3000}
-              yAxisLabel="µS/cm"
-            />
-          </div>
-          <div>
-            <Chart
-              chartTitle="TDS"
-              minValue={300}
-              maxValue={2000}
-              yAxisLabel="ppm"
-            />
-          </div>
-          <div>
-            <Chart
-              chartTitle="TSS"
-              minValue={100}
-              maxValue={800}
-              yAxisLabel="mg/L"
-            />
-          </div>
-          <div>
-            <Chart
-              chartTitle="Dissolved Oxygen"
-              minValue={2}
-              maxValue={8}
-              yAxisLabel="mg/L"
-            />
+          <div className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-rose-50 to-rose-100 hover:from-rose-100 hover:to-rose-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-16 m-auto block text-rose-700 group-hover:scale-110 transition-transform duration-300"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z"
+              />
+            </svg>
+
+            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-rose-800 transition-colors">
+              Monitoring Volume Kendaraan
+            </span>
+            <span className="block text-center text-xs text-slate-600 mt-1">
+              Klik untuk melihat detail
+            </span>
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-gray-300 py-8 px-5 mt-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-white font-bold text-lg mb-3">
-                PT Lorem Ipsum
-              </h3>
-              <p className="text-sm leading-relaxed">
-                Perusahaan tambang terkemuka yang berkomitmen pada praktik
-                pertambangan berkelanjutan dan pengelolaan lingkungan yang
-                bertanggung jawab.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-white font-bold text-lg mb-3">Kontak</h3>
-              <p className="text-sm mb-2">
-                📍 Jl. Industri No. 123, Sumatera Selatan
-              </p>
-              <p className="text-sm mb-2">📞 +62 21 1234 5678</p>
-              <p className="text-sm">✉️ info@loremipsum.co.id</p>
-            </div>
-            <div>
-              <h3 className="text-white font-bold text-lg mb-3">
-                Informasi Sistem
-              </h3>
-              <p className="text-sm mb-2">🔹 5 Titik Monitoring Aktif</p>
-              <p className="text-sm mb-2">🔹 8 Parameter Kualitas Air</p>
-              <p className="text-sm">🔹 Pembaruan Real-time 24/7</p>
-            </div>
-          </div>
-          <div className="border-t border-gray-700 mt-6 pt-6 text-center text-sm">
-            <p>
-              &copy; 2026 PT Lorem Ipsum. All rights reserved. | Sistem
-              Monitoring Lingkungan v1.0
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
-  );
-}
-
-function Cek({ title }: { title?: string }) {
-  const [updateTime] = useState(
-    new Date().toLocaleTimeString("id-ID", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    })
-  );
-
-  const getStatus = (
-    param: string,
-    value: number
-  ): { status: string; color: string } => {
-    // Simulasi status berdasarkan nilai
-    if (param === "pH") {
-      return value >= 6 && value <= 8
-        ? {
-            status: "Normal",
-            color: "bg-emerald-50 text-emerald-700 border border-emerald-200",
-          }
-        : {
-            status: "Perhatian",
-            color: "bg-amber-50 text-amber-700 border border-amber-200",
-          };
-    }
-    if (param === "TSS") {
-      return value < 600
-        ? {
-            status: "Normal",
-            color: "bg-emerald-50 text-emerald-700 border border-emerald-200",
-          }
-        : {
-            status: "Perhatian",
-            color: "bg-amber-50 text-amber-700 border border-amber-200",
-          };
-    }
-    if (param === "DO") {
-      return value >= 4
-        ? {
-            status: "Normal",
-            color: "bg-emerald-50 text-emerald-700 border border-emerald-200",
-          }
-        : {
-            status: "Perhatian",
-            color: "bg-amber-50 text-amber-700 border border-amber-200",
-          };
-    }
-    return {
-      status: "Normal",
-      color: "bg-emerald-50 text-emerald-700 border border-emerald-200",
-    };
-  };
-
-  const suhuLingkungan = faker.number.int({ min: 25, max: 40 });
-  const kelembapan = faker.number.int({ min: 50, max: 95 });
-  const suhuAir = faker.number.int({ min: 22, max: 35 });
-  const pH = faker.number.float({ min: 4.0, max: 9.0, fractionDigits: 1 });
-  const ec = faker.number.float({ min: 0.5, max: 3.0, fractionDigits: 2 });
-  const tds = faker.number.int({ min: 300, max: 2000 });
-  const tss = faker.number.int({ min: 100, max: 800 });
-  const oksigen = faker.number.float({ min: 2.0, max: 8.0, fractionDigits: 1 });
-
-  return (
-    <>
-      <div className="flex items-center justify-between mb-3 pb-3 border-b border-slate-200">
-        <span className="font-bold text-xl text-slate-800">{title}</span>
-        <span className="text-xs bg-emerald-500 text-white px-3 py-1.5 rounded-full shadow-sm font-medium">
-          Online
-        </span>
-      </div>
-      <table className="table-auto w-full bg-white rounded-lg overflow-hidden">
-        <thead className="bg-slate-100">
-          <tr>
-            <th className="font-semibold text-slate-700 p-3 text-left text-sm">
-              Parameter
-            </th>
-            <th className="font-semibold text-slate-700 p-3 text-center text-sm">
-              Nilai
-            </th>
-          </tr>
-        </thead>
-        <tbody className="text-sm divide-y divide-slate-100">
-          <tr className="hover:bg-slate-50 transition-colors">
-            <td className="p-3">
-              <span className="font-medium text-slate-700">
-                Suhu Lingkungan
-              </span>
-              <span className="block text-xs text-slate-500 mt-0.5">°C</span>
-            </td>
-            <td className="p-3 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="font-bold text-slate-800 text-base">
-                  {suhuLingkungan}
-                </span>
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-md font-medium ${
-                    getStatus("temp", suhuLingkungan).color
-                  }`}
-                >
-                  {getStatus("temp", suhuLingkungan).status}
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr className="hover:bg-slate-50 transition-colors">
-            <td className="p-3">
-              <span className="font-medium text-slate-700">
-                Kelembapan Lingkungan
-              </span>
-              <span className="block text-xs text-slate-500 mt-0.5">% RH</span>
-            </td>
-            <td className="p-3 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="font-bold text-slate-800 text-base">
-                  {kelembapan}
-                </span>
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-md font-medium ${
-                    getStatus("humidity", kelembapan).color
-                  }`}
-                >
-                  {getStatus("humidity", kelembapan).status}
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr className="hover:bg-slate-50 transition-colors">
-            <td className="p-3">
-              <span className="font-medium text-slate-700">Suhu Air</span>
-              <span className="block text-xs text-slate-500 mt-0.5">°C</span>
-            </td>
-            <td className="p-3 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="font-bold text-slate-800 text-base">
-                  {suhuAir}
-                </span>
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-md font-medium ${
-                    getStatus("watertemp", suhuAir).color
-                  }`}
-                >
-                  {getStatus("watertemp", suhuAir).status}
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr className="hover:bg-slate-50 transition-colors">
-            <td className="p-3">
-              <span className="font-medium text-slate-700">pH</span>
-            </td>
-            <td className="p-3 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="font-bold text-slate-800 text-base">{pH}</span>
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-md font-medium ${
-                    getStatus("pH", pH).color
-                  }`}
-                >
-                  {getStatus("pH", pH).status}
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr className="hover:bg-slate-50 transition-colors">
-            <td className="p-3">
-              <span className="font-medium text-slate-700">EC</span>
-              <span className="block text-xs text-slate-500 mt-0.5">mS/cm</span>
-            </td>
-            <td className="p-3 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="font-bold text-slate-800 text-base">{ec}</span>
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-md font-medium ${
-                    getStatus("EC", ec).color
-                  }`}
-                >
-                  {getStatus("EC", ec).status}
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr className="hover:bg-slate-50 transition-colors">
-            <td className="p-3">
-              <span className="font-medium text-slate-700">
-                Total Dissolved Solids
-              </span>
-              <span className="block text-xs text-slate-500 mt-0.5">ppm</span>
-            </td>
-            <td className="p-3 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="font-bold text-slate-800 text-base">
-                  {tds}
-                </span>
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-md font-medium ${
-                    getStatus("TDS", tds).color
-                  }`}
-                >
-                  {getStatus("TDS", tds).status}
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr className="hover:bg-slate-50 transition-colors">
-            <td className="p-3">
-              <span className="font-medium text-slate-700">
-                Total Suspended Solids
-              </span>
-              <span className="block text-xs text-slate-500 mt-0.5">ppm</span>
-            </td>
-            <td className="p-3 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="font-bold text-slate-800 text-base">
-                  {tss}
-                </span>
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-md font-medium ${
-                    getStatus("TSS", tss).color
-                  }`}
-                >
-                  {getStatus("TSS", tss).status}
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr className="hover:bg-slate-50 transition-colors">
-            <td className="p-3">
-              <span className="font-medium text-slate-700">
-                Oksigen Terlarut
-              </span>
-              <span className="block text-xs text-slate-500 mt-0.5">mg/L</span>
-            </td>
-            <td className="p-3 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="font-bold text-slate-800 text-base">
-                  {oksigen}
-                </span>
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-md font-medium ${
-                    getStatus("DO", oksigen).color
-                  }`}
-                >
-                  {getStatus("DO", oksigen).status}
-                </span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      {/* Card Footer Info */}
-      <div className="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between text-xs">
-        <span className="text-slate-500">
-          Pembaruan Terakhir Pada:{" "}
-          <span className="font-medium text-slate-700">{updateTime}</span>
-        </span>
-      </div>
-    </>
   );
 }
 
