@@ -21,6 +21,8 @@ import {
   CheckCircleIcon,
   BuildingOfficeIcon,
 } from "@heroicons/react/24/outline";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 // Register Chart.js components
 ChartJS.register(
@@ -291,31 +293,14 @@ export default function OfficePage() {
   const normalCount = rooms.filter((room) => room.status === "normal").length;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center space-x-3">
-              <BuildingOfficeIcon className="h-10 w-10 text-blue-600" />
-              <div>
-                <h1 className="text-3xl font-bold text-gray-800">
-                  Monitoring Iklim Kantor Pertambangan
-                </h1>
-                <p className="text-gray-500 text-sm mt-1">
-                  Sistem Pemantauan Kesehatan & Keselamatan Lingkungan Kerja
-                </p>
-              </div>
-            </div>
-            <div className="text-right">
-              <p className="text-sm text-gray-500">Waktu Update</p>
-              <p className="text-lg font-semibold text-gray-700">
-                {currentTime.toLocaleTimeString("id-ID")}
-              </p>
-            </div>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <Header
+        title="Monitoring Iklim Kantor Pertambangan"
+        subtitle="Sistem Pemantauan Kesehatan & Keselamatan Lingkungan Kerja"
+      />
 
+      <div className="max-w-7xl mx-auto space-y-6 p-4 md:p-6">
         {/* Status Overview */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="bg-green-50 border-l-4 border-green-500 rounded-lg p-4 shadow">
@@ -828,6 +813,7 @@ export default function OfficePage() {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

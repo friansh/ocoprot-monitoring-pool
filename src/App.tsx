@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router";
 import {
-  ShieldCheckIcon,
-  ClockIcon,
   TruckIcon,
   MapIcon,
   BuildingOfficeIcon,
   ClipboardDocumentCheckIcon,
   CalculatorIcon,
 } from "@heroicons/react/24/outline";
+import { Footer } from "./components";
 
 function App() {
   let navigate = useNavigate();
@@ -15,115 +14,110 @@ function App() {
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white py-16 px-5 shadow-lg">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-4">
-            Selamat Datang di Portal Manajemen Terintegrasi
+      <div className="bg-slate-700 text-white py-12 px-5 shadow-md">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-5xl font-bold mb-6">
+            Portal Monitoring PT Lorem Ipsum
           </h1>
-          <h2 className="text-2xl font-semibold mb-6 text-slate-300">
-            PT Lorem Ipsum
-          </h2>
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Portal terpusat untuk monitoring dan manajemen operasional
-            perusahaan secara real-time. Akses semua sistem monitoring, data
-            analitik, dan informasi penting dalam satu platform yang
-            terintegrasi.
-          </p>
-          <div className="mt-8 flex items-center justify-center gap-8 text-sm">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-              <span>Sistem Aktif</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheckIcon className="w-5 h-5" />
-              <span>Aman & Terenkripsi</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <ClockIcon className="w-5 h-5" />
-              <span>24/7 Monitoring</span>
-            </div>
+          <p className="text-2xl mb-8">Sistem Monitoring Operasional Terpadu</p>
+          <div className="inline-flex items-center gap-3 bg-white/20 rounded-lg px-6 py-3">
+            <div className="w-3 h-3 bg-green-300 rounded-full"></div>
+            <span className="text-lg font-semibold">
+              Sistem Aktif - Monitoring 24/7
+            </span>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto p-8">
-        <div className="mb-8">
-          <h3 className="text-2xl font-bold text-slate-800 mb-2">
-            Pilih Sistem
-          </h3>
-          <p className="text-slate-600">
-            Klik pada modul di bawah untuk mengakses sistem yang diinginkan
+      <div className="max-w-6xl mx-auto px-8 py-12">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-slate-800 mb-3">
+            Pilih Menu Sistem
+          </h2>
+          <p className="text-xl text-slate-600">
+            Klik pada menu di bawah untuk mengakses sistem
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-8">
           <div
-            className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-emerald-50 to-emerald-100 hover:from-emerald-100 hover:to-emerald-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group"
+            className="bg-white border-3 border-emerald-300 rounded-lg p-8 shadow-md cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => {
               navigate("/truck");
             }}
           >
-            <TruckIcon className="size-16 m-auto block text-emerald-700 group-hover:scale-110 transition-transform duration-300" />
-
-            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-emerald-800 transition-colors">
-              Monitoring Status Truk
-            </span>
-            <span className="block text-center text-xs text-slate-600 mt-1">
-              Klik untuk melihat detail
-            </span>
+            <TruckIcon className="w-20 h-20 mx-auto mb-4 text-emerald-500" />
+            <h3 className="text-2xl font-bold text-center text-slate-800 mb-2">
+              Monitoring Truk
+            </h3>
+            <p className="text-center text-lg text-slate-600">
+              GPS & Status Kendaraan
+            </p>
           </div>
+
           <div
-            className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group"
+            className="bg-white border-3 border-blue-300 rounded-lg p-8 shadow-md cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => {
               navigate("/pool");
             }}
           >
-            <MapIcon className="size-16 m-auto block text-blue-700 group-hover:scale-110 transition-transform duration-300" />
-
-            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-blue-800 transition-colors">
-              Monitoring Kolam Endapan
-            </span>
-            <span className="block text-center text-xs text-slate-600 mt-1">
-              Klik untuk melihat detail
-            </span>
+            <MapIcon className="w-20 h-20 mx-auto mb-4 text-blue-500" />
+            <h3 className="text-2xl font-bold text-center text-slate-800 mb-2">
+              Monitoring Kolam
+            </h3>
+            <p className="text-center text-lg text-slate-600">
+              Kualitas Air & pH
+            </p>
           </div>
+
           <div
-            className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-amber-50 to-amber-100 hover:from-amber-100 hover:to-amber-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group"
+            className="bg-white border-3 border-amber-300 rounded-lg p-8 shadow-md cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => {
               navigate("/office");
             }}
           >
-            <BuildingOfficeIcon className="size-16 m-auto block text-amber-700 group-hover:scale-110 transition-transform duration-300" />
-
-            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-amber-800 transition-colors">
-              Monitoring Klimat Kantor
-            </span>
-            <span className="block text-center text-xs text-slate-600 mt-1">
-              Klik untuk melihat detail
-            </span>
+            <BuildingOfficeIcon className="w-20 h-20 mx-auto mb-4 text-amber-500" />
+            <h3 className="text-2xl font-bold text-center text-slate-800 mb-2">
+              Monitoring Kantor
+            </h3>
+            <p className="text-center text-lg text-slate-600">
+              Suhu & Kelembaban
+            </p>
           </div>
-          <div className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group">
-            <ClipboardDocumentCheckIcon className="size-16 m-auto block text-purple-700 group-hover:scale-110 transition-transform duration-300" />
 
-            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-purple-800 transition-colors">
+          <div
+            className="bg-white border-3 border-purple-300 rounded-lg p-8 shadow-md cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
+              navigate("/presence");
+            }}
+          >
+            <ClipboardDocumentCheckIcon className="w-20 h-20 mx-auto mb-4 text-purple-500" />
+            <h3 className="text-2xl font-bold text-center text-slate-800 mb-2">
               Absensi
-            </span>
-            <span className="block text-center text-xs text-slate-600 mt-1">
-              Klik untuk melihat detail
-            </span>
+            </h3>
+            <p className="text-center text-lg text-slate-600">
+              Presensi Karyawan
+            </p>
           </div>
-          <div className="border border-slate-300 rounded-xl p-4 shadow-md bg-linear-to-br from-rose-50 to-rose-100 hover:from-rose-100 hover:to-rose-200 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group">
-            <CalculatorIcon className="size-16 m-auto block text-rose-700 group-hover:scale-110 transition-transform duration-300" />
 
-            <span className="block text-center font-bold text-lg mt-3 text-slate-800 group-hover:text-rose-800 transition-colors">
-              Monitoring Volume Kendaraan
-            </span>
-            <span className="block text-center text-xs text-slate-600 mt-1">
-              Klik untuk melihat detail
-            </span>
+          <div
+            className="bg-white border-3 border-rose-300 rounded-lg p-8 shadow-md cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
+              navigate("/volume");
+            }}
+          >
+            <CalculatorIcon className="w-20 h-20 mx-auto mb-4 text-rose-500" />
+            <h3 className="text-2xl font-bold text-center text-slate-800 mb-2">
+              Monitoring Volume
+            </h3>
+            <p className="text-center text-lg text-slate-600">
+              Volume Kendaraan
+            </p>
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

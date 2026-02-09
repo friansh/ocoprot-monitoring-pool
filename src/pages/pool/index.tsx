@@ -1,4 +1,6 @@
 import MapImg from "../../assets/map.png";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 import Chart from "./chart";
 import Table from "./table";
@@ -7,38 +9,11 @@ export default function Pool() {
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* Header */}
-      <div className="bg-linear-to-r from-slate-800 to-slate-700 shadow-lg py-4 px-5 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-semibold mb-1">
-                Sistem Monitoring Kualitas Air Kolam Pengendapan Lumpur
-              </h1>
-              <p className="text-slate-300 text-sm">PT Lorem Ipsum</p>
-            </div>
-            <div className="text-right">
-              <div className="flex items-center gap-2 justify-end">
-                <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold">Sistem Aktif</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Header
+        title="Sistem Monitoring Kualitas Air Kolam Pengendapan Lumpur"
+        subtitle="Monitoring Real-time Kualitas Air - PT Lorem Ipsum"
+      />
 
-      {/* Info Section */}
-      <div className="bg-white border-b border-gray-200 py-4 px-5">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-gray-700 text-sm leading-relaxed">
-            <span className="font-semibold">PT Lorem Ipsum</span> berkomitmen
-            dalam pengelolaan lingkungan yang berkelanjutan. Sistem monitoring
-            real-time ini dirancang untuk memantau kualitas air di kolam
-            pengendapan lumpur tambang secara kontinyu, memastikan parameter
-            kualitas air tetap dalam batas standar yang telah ditetapkan sesuai
-            dengan regulasi lingkungan.
-          </p>
-        </div>
-      </div>
       <div className="flex flex-row gap-5 max-w-7xl mx-auto p-5">
         <div className="w-1/3">
           <div className="flex items-center gap-3 mb-4">
@@ -165,45 +140,7 @@ export default function Pool() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-gray-300 py-8 px-5 mt-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-white font-bold text-lg mb-3">
-                PT Lorem Ipsum
-              </h3>
-              <p className="text-sm leading-relaxed">
-                Perusahaan tambang terkemuka yang berkomitmen pada praktik
-                pertambangan berkelanjutan dan pengelolaan lingkungan yang
-                bertanggung jawab.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-white font-bold text-lg mb-3">Kontak</h3>
-              <p className="text-sm mb-2">
-                📍 Jl. Industri No. 123, Sumatera Selatan
-              </p>
-              <p className="text-sm mb-2">📞 +62 21 1234 5678</p>
-              <p className="text-sm">✉️ info@loremipsum.co.id</p>
-            </div>
-            <div>
-              <h3 className="text-white font-bold text-lg mb-3">
-                Informasi Sistem
-              </h3>
-              <p className="text-sm mb-2">🔹 5 Titik Monitoring Aktif</p>
-              <p className="text-sm mb-2">🔹 8 Parameter Kualitas Air</p>
-              <p className="text-sm">🔹 Pembaruan Real-time 24/7</p>
-            </div>
-          </div>
-          <div className="border-t border-gray-700 mt-6 pt-6 text-center text-sm">
-            <p>
-              &copy; 2026 PT Lorem Ipsum. All rights reserved. | Sistem
-              Monitoring Lingkungan v1.0
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
